@@ -1,0 +1,7 @@
+<h1>Showing user</h1>
+
+<b><%= render "user.html", user: @user %></b>
+
+<p>
+    <%= link "Show all", to: Routes.user_path(@conn, :index, []) %>
+</p>

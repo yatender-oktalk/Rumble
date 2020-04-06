@@ -4,7 +4,6 @@ defmodule RumblWeb.UserView do
   alias Rumbl.Accounts
 
   def first_name(%Accounts.User{name: name}) do
-    IO.inspect name
     name
     |> String.split(" ")
     |> Enum.at(0)
