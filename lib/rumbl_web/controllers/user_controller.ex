@@ -4,20 +4,17 @@ defmodule RumblWeb.UserController do
   alias Rumbl.Accounts
   alias Rumbl.Accounts.User
 
-  plug :authenticate when action in [:index, :show]
+  plug(:authenticate when action in [:index, :show])
 
   def index(conn, _params) do
-    IO.inspect conn
     users = Accounts.list_users()
     render(conn, "index.html", users: users)
   end
 
   def show(conn, %{"id" => id}) do
-    IO.inspect conn
     user = Accounts.get_user(id)
     render(conn, "show.html", user: user)
   end
-
 
   def new(conn, _params) do
     changeset = Accounts.change_registration(%User{}, %{})

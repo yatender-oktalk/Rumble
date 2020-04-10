@@ -3,10 +3,10 @@ defmodule Rumbl.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :name, :string
-    field :username, :string
-    field :password, :string, virtual: true
-    field :password_hash, :string
+    field(:name, :string)
+    field(:username, :string)
+    field(:password, :string, virtual: true)
+    field(:password_hash, :string)
 
     timestamps()
   end
@@ -28,7 +28,7 @@ defmodule Rumbl.Accounts.User do
     |> put_pass_hash()
   end
 
-  # Private functions
+  # private functions
   defp put_pass_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
