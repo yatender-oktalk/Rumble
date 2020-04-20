@@ -139,6 +139,10 @@ defmodule Rumbl.Multimedia do
     Video.changeset(video, %{})
   end
 
+  def create_category(name) do
+    Repo.insert!(%Category{name: name}, on_conflict: :nothing)
+  end
+
   # Private
   defp user_videos_query(query, %User{id: user_id}) do
     from v in query, where: v.user_id == ^user_id
