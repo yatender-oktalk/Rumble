@@ -17,6 +17,7 @@ defmodule Rumbl.Accounts.User do
     |> validate_required([:name, :username])
     |> validate_format(:name, ~r/[a-zA-Z]/)
     |> validate_length(:username, min: 4, max: 20)
+    |> unique_constraint(:username)
   end
 
   def registration_changeset(user, attrs) do

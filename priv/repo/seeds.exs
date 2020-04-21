@@ -9,7 +9,8 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-alias Rumbl.Repo
-alias Rumbl.Multimedia.Category
+alias Rumbl.Multimedia
 
-Repo.get_by(Category, name: name) || Repo.insert!(%Category{name: name})
+for category <- ~w(Action Drama Romance Comedy Sci-fi) do
+  Multimedia.create_category!(category)
+end
