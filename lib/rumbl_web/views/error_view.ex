@@ -8,7 +8,7 @@ defmodule RumblWeb.ErrorView do
   end
 
   def render("404.html", _assigns) do
-    "Template not found"
+    "Not Found"
   end
 
   # By default, Phoenix returns the status message from
