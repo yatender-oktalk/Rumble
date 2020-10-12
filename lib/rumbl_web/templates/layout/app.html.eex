@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,24 +8,27 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>" />
     <%= csrf_meta_tag() %>
   </head>
-
   <body>
     <header>
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
             <%= if @current_user do %>
-            <li> <%= @current_user.username %></li>
-            <li> <%= link "Logout", to: Routes.session_path(@conn, :delete, @current_user), method: "delete" %></li>
-            <% else %>
-            <li><%= link "Register", to: Routes.user_path(@conn, :new) %></li>
-            <li><%= link "Login", to: Routes.session_path(@conn, :new) %></li>
+              <li><%= @current_user.username %></li>
+              <li><%= link "My Videos", to: Routes.video_path(@conn, :index) %></li>
+              <li>
+                <%= link "Logout",
+                  to: Routes.session_path(@conn, :delete, @current_user),
+                  method: "delete" %>
+              </li>
+              <% else %>
+                <li><%= link "Register", to: Routes.user_path(@conn, :new) %></li>
+                <li><%= link "Login", to: Routes.session_path(@conn, :new) %></li>
             <% end %>
           </ul>
         </nav>
         <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo" />
+        <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo" />
         </a>
       </section>
     </header>
@@ -37,5 +39,4 @@
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
-
 </html>
